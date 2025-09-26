@@ -1,57 +1,285 @@
 ---
 const aboutContent = {
   title: "Sobre mí",
+  subtitle: "Desarrollador Full Stack Junior",
+  highlights: [
+    {
+      icon: "✓",
+      title: "Formación Especializada",
+      description: "Formado en Campuslands con experiencia práctica en tecnologías modernas"
+    },
+    {
+      icon: "⚡",
+      title: "Soluciones Innovadoras",
+      description: "Apasionado por crear aplicaciones web que resuelven problemas reales"
+    },
+    {
+      icon: "👥",
+      title: "Trabajo en Equipo",
+      description: "Experiencia en metodologías ágiles (Scrum) y colaboración multidisciplinaria"
+    }
+  ],
   paragraphs: [
-    "Desarrollador Full Stack Junior formado en Campuslands. Apasionado por la tecnología y la creación de soluciones innovadoras que puedan aplicarse al mundo real. Experiencia en desarrollo de landing pages, aplicaciones web e integración de APIs. Manejo metodologías ágiles (Scrum) y disfruto el trabajo colaborativo con equipos multidisciplinarios.",
-    "Mi experiencia previa en atención al cliente y ventas me ha brindado habilidades sólidas de liderazgo, comunicación y gestión del tiempo, que aplico en cada proyecto técnico que emprendo. Me adapto fácilmente a los cambios, manejo la presión con estrategia y busco siempre la excelencia en cada línea de código."
+    "Desarrollador Full Stack Junior con sólida formación en tecnologías web modernas. Me especializo en crear soluciones digitales elegantes y funcionales, desde landing pages impactantes hasta aplicaciones web complejas con integración de APIs.",
+    "Mi trasfondo en atención al cliente y ventas me ha dotado de habilidades excepcionales de comunicación, liderazgo y gestión del tiempo. Estas competencias blandas, combinadas con mi pasión por el código limpio, me permiten entregar proyectos que no solo funcionan perfectamente, sino que también superan las expectativas del cliente."
   ]
 };
 ---
 
-<section id="sobre-mi">
-  <h3>{aboutContent.title}</h3>
-  {aboutContent.paragraphs.map((paragraph) => (
-    <p>{paragraph}</p>
-  ))}
+<section id="sobre-mi" class="section-padding animate-on-scroll">
+  <div class="container">
+    <div class="about-content">
+      <!-- Header Section -->
+      <div class="about-header">
+        <h2 class="section-title gradient-text">{aboutContent.title}</h2>
+        <p class="section-subtitle">{aboutContent.subtitle}</p>
+      </div>
+
+      <!-- Highlights Grid -->
+      <div class="highlights-grid card-animate">
+        {aboutContent.highlights.map((highlight) => (
+          <div class="highlight-card glass">
+            <div class="highlight-icon">{highlight.icon}</div>
+            <h3 class="highlight-title">{highlight.title}</h3>
+            <p class="highlight-description">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Content Paragraphs -->
+      <div class="about-text">
+        {aboutContent.paragraphs.map((paragraph, index) => (
+          <div class="text-block" style={`animation-delay: ${index * 0.2}s`}>
+            <p>{paragraph}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Call to Action -->
+      <div class="about-cta">
+        <a href="#contacto" class="cta-button">
+          <span>Colaboremos juntos</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M7 17l9.2-9.2M17 17V7H7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
-/* Manejo de secciones */
-section {
-  background-image: linear-gradient(to top, #dbdcd7 0%, #d7ddd7 25%, #c9e2cd 45%, #62e76d 65%, #23b82a 100%);
-  background-attachment: fixed;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  scroll-margin-top: 70px;
-  transition: 0.3s ease;
+/* Section Styling */
+#sobre-mi {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-section:hover {
-  box-shadow: 0 25px 50px rgba(33, 109, 30, 5);
+#sobre-mi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 40%, var(--primary-100) 50%, transparent 60%);
+  opacity: 0.3;
+  animation: shimmer 3s ease-in-out infinite;
 }
 
-/* Tipografia en secciones */
-section h3 {
-  font-family: "Montserrat", sans-serif;
-  font-style: oblique;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #112714;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  font-weight: 700;
+.about-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--neutral-600);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Highlights Grid */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.highlight-card {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  border: 1px solid var(--primary-200);
+  background: rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary-100), transparent);
+  transition: left 0.6s;
+}
+
+.highlight-card:hover::before {
+  left: 100%;
+}
+
+.highlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-300);
+}
+
+.highlight-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  color: var(--primary-600);
+}
+
+.highlight-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-description {
+  color: var(--neutral-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Text Content */
+.about-text {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.text-block {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary-400);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.text-block:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-left-color: var(--accent-500);
+  transform: translateX(8px);
+}
+
+.text-block p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--neutral-700);
+  margin: 0;
+  text-align: justify;
+}
+
+/* Call to Action */
+.about-cta {
   text-align: center;
 }
 
-section p {
-  text-align: justify;
-  text-align-last: center;
-  font-size: 1.1rem;
-  color: #2c2c2c;
-  line-height: 1.6;
-  font-weight: 400;
-  padding: 0 10px;
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-600), var(--accent-600));
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.arrow-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--transition-base);
+}
+
+.cta-button:hover .arrow-icon {
+  transform: translate(4px, -4px);
+}
+
+/* Animations */
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-50%); }
+  50% { transform: translateX(0%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .highlight-card {
+    padding: 1.5rem;
+  }
+
+  .text-block {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
 }
 </style>

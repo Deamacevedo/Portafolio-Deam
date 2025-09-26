@@ -96,6 +96,123 @@ const structuredData = {
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
 	</head>
 	<body class="min-h-screen bg-gray-50 font-sans">
+		<!-- Scroll Progress Indicator -->
+		<div class="scroll-progress"></div>
+
 		<slot />
+
+		<!-- GSAP and Animation Scripts -->
+		<script>
+			import { gsap } from 'gsap';
+			import { ScrollTrigger } from 'gsap/ScrollTrigger';
+			import Lenis from 'lenis';
+
+			// Register GSAP plugins
+			gsap.registerPlugin(ScrollTrigger);
+
+			// Initialize Lenis for smooth scrolling with optimized settings
+			const lenis = new Lenis({
+				duration: 0.8,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				smoothWheel: true,
+				smoothTouch: false,
+				wheelMultiplier: 1.2,
+				touchMultiplier: 2,
+				syncTouch: true,
+				infinite: false,
+			});
+
+			function raf(time) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			// Global GSAP settings
+			gsap.defaults({
+				ease: "power3.out",
+				duration: 0.8
+			});
+
+			// Configure ScrollTrigger
+			ScrollTrigger.config({
+				autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+				ignoreMobileResize: true
+			});
+
+			// Set up scroll-triggered animations
+			document.addEventListener('DOMContentLoaded', () => {
+				// Animate sections on scroll with enhanced settings
+				gsap.utils.toArray('.animate-on-scroll').forEach((element, index) => {
+					gsap.fromTo(element,
+						{
+							opacity: 0,
+							y: 60,
+							scale: 0.96,
+							rotateX: 5
+						},
+						{
+							opacity: 1,
+							y: 0,
+							scale: 1,
+							rotateX: 0,
+							duration: 1,
+							delay: index * 0.1,
+							ease: "power3.out",
+							scrollTrigger: {
+								trigger: element,
+								start: "top 90%",
+								end: "bottom 10%",
+								toggleActions: "play none none reverse",
+								refreshPriority: -1
+							}
+						}
+					);
+				});
+
+				// Animate cards with enhanced stagger
+				gsap.utils.toArray('.card-animate').forEach((container) => {
+					gsap.fromTo(container.children,
+						{
+							opacity: 0,
+							y: 40,
+							rotateX: 10,
+							scale: 0.9
+						},
+						{
+							opacity: 1,
+							y: 0,
+							rotateX: 0,
+							scale: 1,
+							duration: 0.8,
+							stagger: {
+								amount: 0.4,
+								from: "start"
+							},
+							ease: "power3.out",
+							scrollTrigger: {
+								trigger: container,
+								start: "top 85%",
+								toggleActions: "play none none reverse",
+								refreshPriority: 0
+							}
+						}
+					);
+				});
+
+				// Add scroll progress indicator
+				gsap.to(".scroll-progress", {
+					scaleX: 1,
+					ease: "none",
+					scrollTrigger: {
+						trigger: "body",
+						start: "top top",
+						end: "bottom bottom",
+						scrub: true
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

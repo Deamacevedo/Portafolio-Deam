@@ -1,31 +1,478 @@
 ---
-// Experience section component
+const experienceData = {
+  title: "Experiencia Profesional",
+  subtitle: "Trayectoria en desarrollo de software y habilidades transferibles",
+
+  experiences: [
+    {
+      period: "2025 - Presente",
+      company: "Campuslands",
+      position: "Estudiante - Bootcamp Desarrollo de Software",
+      type: "technical",
+      location: "Bucaramanga, Colombia",
+      description: "Formación intensiva en desarrollo Full Stack con proyectos prácticos y metodologías ágiles.",
+      achievements: [
+        "Desarrollo de landing pages modernas con Astro y Tailwind CSS",
+        "Integración de APIs públicas (Valorant API) en aplicaciones React",
+        "Implementación de proyectos colaborativos usando Git y GitHub",
+        "Aplicación de metodologías ágiles (Scrum) en equipos multidisciplinarios",
+        "Desarrollo de aplicaciones web completas con stack MERN"
+      ],
+      technologies: ["Python", "JavaScript", "React", "Node.js", "MongoDB", "Git", "Astro", "Tailwind CSS"],
+      status: "current"
+    },
+    {
+      period: "2018 - 2024",
+      company: "Sector Servicios",
+      position: "Especialista en Atención al Cliente y Ventas",
+      type: "business",
+      location: "Colombia",
+      description: "Desarrollo de habilidades blandas esenciales para el trabajo en equipo y la gestión de proyectos.",
+      achievements: [
+        "Liderazgo de equipos pequeños en diferentes proyectos y situaciones",
+        "Comunicación efectiva con clientes de diversos perfiles y necesidades",
+        "Adaptabilidad rápida a cambios de roles y responsabilidades",
+        "Gestión eficiente del tiempo y cumplimiento de objetivos bajo presión",
+        "Resolución creativa de problemas complejos en atención al cliente"
+      ],
+      skills: ["Liderazgo", "Comunicación", "Gestión del tiempo", "Resolución de problemas", "Trabajo en equipo"],
+      status: "completed"
+    }
+  ]
+};
 ---
 
-<section id="experiencia" class="max-w-4xl mx-auto my-16 p-8 bg-gradient-to-t from-gray-200 via-gray-300 via-green-200 via-green-400 to-green-600 bg-fixed rounded-xl shadow-lg shadow-black/25 hover:shadow-xl hover:shadow-green-700/50 transition-shadow duration-300 scroll-mt-20">
-  <h3 class="text-3xl font-bold text-center mb-8 text-green-900 drop-shadow-sm">Experiencia</h3>
+<section id="experiencia" class="section-padding animate-on-scroll">
+  <div class="container">
+    <div class="experience-content">
+      <!-- Header -->
+      <div class="experience-header">
+        <h2 class="section-title gradient-text">{experienceData.title}</h2>
+        <p class="section-subtitle">{experienceData.subtitle}</p>
+      </div>
 
-  <div class="space-y-8">
-    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-6 border border-white/30">
-      <h4 class="text-xl font-bold mb-4 text-green-900">2025–Actualidad | Campuslands – Bootcamp Desarrollo de Software</h4>
-      <ul class="list-disc list-inside space-y-2 text-gray-800">
-        <li>Desarrollo de proyectos colaborativos con enfoque práctico</li>
-        <li>Creación de landing pages con Astro + Tailwind CSS</li>
-        <li>Consumo e integración de APIs públicas (ej. Valorant)</li>
-        <li>Uso de Git, Python y metodologías ágiles (Scrum)</li>
-        <li>Desarrollo de aplicaciones web completas</li>
-      </ul>
-    </div>
+      <!-- Experience Timeline -->
+      <div class="experience-timeline">
+        <div class="timeline-line-exp"></div>
+        <div class="experience-items card-animate">
+          {experienceData.experiences.map((exp, index) => (
+            <div class={`experience-item ${exp.status}`} data-index={index}>
+              <div class="experience-marker">
+                <div class={`experience-dot ${exp.type}`}></div>
+              </div>
 
-    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-6 border border-white/30">
-      <h4 class="text-xl font-bold mb-4 text-green-900">2018–2024 | Atención al cliente y ventas</h4>
-      <ul class="list-disc list-inside space-y-2 text-gray-800">
-        <li>Trabajo en equipo y atención al detalle</li>
-        <li>Comunicación efectiva con clientes y compañeros</li>
-        <li>Liderazgo y adaptabilidad en roles diversos</li>
-        <li>Capacidad para trabajar bajo presión</li>
-        <li>Gestión del tiempo y resolución de problemas</li>
-      </ul>
+              <div class="experience-content-wrapper">
+                <div class="experience-card">
+                  <!-- Card Header -->
+                  <div class="exp-card-header">
+                    <div class="exp-title-section">
+                      <h3 class="position-title">{exp.position}</h3>
+                      <h4 class="company-name">{exp.company}</h4>
+                      <div class="exp-meta">
+                        <span class="period">{exp.period}</span>
+                        <span class="location">{exp.location}</span>
+                      </div>
+                    </div>
+                    <div class={`type-badge ${exp.type}`}>
+                      {exp.type === 'technical' ? 'Técnico' : 'Comercial'}
+                    </div>
+                  </div>
+
+                  <!-- Description -->
+                  <p class="exp-description">{exp.description}</p>
+
+                  <!-- Achievements -->
+                  <div class="achievements-section">
+                    <h5 class="achievements-title">Logros principales:</h5>
+                    <ul class="achievements-list">
+                      {exp.achievements.map((achievement) => (
+                        <li>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <!-- Technologies or Skills -->
+                  {exp.technologies && (
+                    <div class="tech-section">
+                      <h5 class="tech-title">Tecnologías utilizadas:</h5>
+                      <div class="tech-tags">
+                        {exp.technologies.map((tech) => (
+                          <span class="tech-tag">{tech}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {exp.skills && (
+                    <div class="skills-section">
+                      <h5 class="skills-title">Competencias desarrolladas:</h5>
+                      <div class="skill-tags">
+                        {exp.skills.map((skill) => (
+                          <span class="skill-tag">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+/* Section Styling */
+#experiencia {
+  background: linear-gradient(135deg, var(--accent-50) 0%, var(--primary-50) 100%);
+  position: relative;
+}
+
+#experiencia::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 40%, var(--accent-100) 50%, transparent 60%);
+  opacity: 0.2;
+  animation: shimmer-exp 5s ease-in-out infinite;
+}
+
+.experience-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.experience-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--neutral-600);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Timeline */
+.experience-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-line-exp {
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-400), var(--primary-400));
+  border-radius: 1.5px;
+}
+
+.experience-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.experience-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+
+/* Experience Markers */
+.experience-marker {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.experience-dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 4px solid white;
+  z-index: 2;
+  transition: all var(--transition-base);
+}
+
+.experience-dot.technical {
+  background: var(--primary-500);
+  box-shadow: 0 0 0 4px var(--primary-200);
+}
+
+.experience-dot.business {
+  background: var(--accent-500);
+  box-shadow: 0 0 0 4px var(--accent-200);
+}
+
+.experience-item.current .experience-dot {
+  animation: pulse-exp 2s ease-in-out infinite;
+}
+
+.experience-item:hover .experience-dot {
+  transform: scale(1.3);
+}
+
+/* Experience Content */
+.experience-content-wrapper {
+  flex: 1;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  border: 1px solid var(--primary-200);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-50), transparent);
+  transition: left 0.8s;
+}
+
+.experience-card:hover::before {
+  left: 100%;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary-300);
+}
+
+/* Card Header */
+.exp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.exp-title-section {
+  flex: 1;
+}
+
+.position-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--neutral-800);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.company-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-600);
+  margin-bottom: 0.75rem;
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+}
+
+.period {
+  font-weight: 600;
+  color: var(--accent-600);
+}
+
+.location::before {
+  content: '•';
+  margin-right: 0.25rem;
+}
+
+.type-badge {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.type-badge.technical {
+  background: var(--primary-100);
+  color: var(--primary-700);
+}
+
+.type-badge.business {
+  background: var(--accent-100);
+  color: var(--accent-700);
+}
+
+/* Description */
+.exp-description {
+  font-size: 1.125rem;
+  color: var(--neutral-600);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Achievements */
+.achievements-section {
+  margin-bottom: 2rem;
+}
+
+.achievements-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: 1rem;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.achievements-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
+}
+
+.achievements-list li::before {
+  content: '▸';
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--primary-500);
+  font-weight: bold;
+}
+
+/* Technologies and Skills */
+.tech-section, .skills-section {
+  margin-bottom: 1.5rem;
+}
+
+.tech-title, .skills-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: 0.75rem;
+}
+
+.tech-tags, .skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  padding: 0.375rem 0.75rem;
+  background: var(--primary-100);
+  color: var(--primary-700);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.tech-tag:hover {
+  background: var(--primary-200);
+  transform: translateY(-1px);
+}
+
+.skill-tag {
+  padding: 0.375rem 0.75rem;
+  background: var(--accent-100);
+  color: var(--accent-700);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.skill-tag:hover {
+  background: var(--accent-200);
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes shimmer-exp {
+  0%, 100% { transform: translateX(-50%); }
+  50% { transform: translateX(0%); }
+}
+
+@keyframes pulse-exp {
+  0%, 100% {
+    box-shadow: 0 0 0 4px var(--primary-200), 0 0 20px var(--primary-300);
+  }
+  50% {
+    box-shadow: 0 0 0 8px var(--primary-200), 0 0 30px var(--primary-300);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-line-exp {
+    left: 1rem;
+  }
+
+  .experience-item {
+    gap: 1.5rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .exp-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .position-title {
+    font-size: 1.5rem;
+  }
+
+  .company-name {
+    font-size: 1.125rem;
+  }
+
+  .exp-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+</style>
