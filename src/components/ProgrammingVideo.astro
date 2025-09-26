@@ -1,12 +1,13 @@
 ---
 // Programming video section component
+import videoSrc from "../assets/video/programando.mp4";
 ---
 
 <section id="programando">
   <h3>Programando en Acción</h3>
   <div class="video-container">
     <video controls autoplay muted loop>
-      <source src="../assets/video/programando.mp4" type="video/mp4" />
+      <source src={videoSrc} type="video/mp4" />
       Tu navegador no soporta la etiqueta de video.
     </video>
   </div>
