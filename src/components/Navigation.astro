@@ -1,0 +1,87 @@
+---
+const navItems = [
+  { href: "#sobre-mi", text: "Sobre mí" },
+  { href: "#habilidades", text: "Habilidades" },
+  { href: "#educacion", text: "Educación" },
+  { href: "#experiencia", text: "Experiencia" },
+  { href: "#contacto", text: "Contacto" },
+  { href: "#proyectos", text: "Proyectos" },
+  { href: "#programando", text: "Media" },
+  { href: "#donaciones", text: "Donaciones" }
+];
+---
+
+<nav>
+  <ul>
+    {navItems.map((item) => (
+      <li>
+        <a href={item.href}>{item.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+/* Barra navegacion*/
+nav {
+  background-image: linear-gradient(to left, #dbdcd7 0%, #d7ddd7 25%, #c9e2cd 45%, #62e76d 65%, #23b82a 100%);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #111111ea;
+  justify-items: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 12px 20px rgba(33, 109, 30, 0.7);
+  backdrop-filter: blur(10px);
+  transition: all 1s ease-out;
+  z-index: 50;
+}
+
+nav:hover {
+  box-shadow: 0 20px 40px rgba(33, 109, 30, 1.5);
+}
+
+nav ul {
+  margin: 15px 10px;
+  list-style: none;
+  align-items: center;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+nav a:hover {
+  color: #063809;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    position: static;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav li {
+    margin: 2px 0px;
+  }
+}
+</style>

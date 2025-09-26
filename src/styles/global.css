@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Fuentes */
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-padding-top: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Grid Layout */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+/* Iconos globales */
+.icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}

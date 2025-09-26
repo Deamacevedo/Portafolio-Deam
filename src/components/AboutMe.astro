@@ -1,0 +1,57 @@
+---
+const aboutContent = {
+  title: "Sobre mí",
+  paragraphs: [
+    "Desarrollador Full Stack Junior formado en Campuslands. Apasionado por la tecnología y la creación de soluciones innovadoras que puedan aplicarse al mundo real. Experiencia en desarrollo de landing pages, aplicaciones web e integración de APIs. Manejo metodologías ágiles (Scrum) y disfruto el trabajo colaborativo con equipos multidisciplinarios.",
+    "Mi experiencia previa en atención al cliente y ventas me ha brindado habilidades sólidas de liderazgo, comunicación y gestión del tiempo, que aplico en cada proyecto técnico que emprendo. Me adapto fácilmente a los cambios, manejo la presión con estrategia y busco siempre la excelencia en cada línea de código."
+  ]
+};
+---
+
+<section id="sobre-mi">
+  <h3>{aboutContent.title}</h3>
+  {aboutContent.paragraphs.map((paragraph) => (
+    <p>{paragraph}</p>
+  ))}
+</section>
+
+<style>
+/* Manejo de secciones */
+section {
+  background-image: linear-gradient(to top, #dbdcd7 0%, #d7ddd7 25%, #c9e2cd 45%, #62e76d 65%, #23b82a 100%);
+  background-attachment: fixed;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  scroll-margin-top: 70px;
+  transition: 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 25px 50px rgba(33, 109, 30, 5);
+}
+
+/* Tipografia en secciones */
+section h3 {
+  font-family: "Montserrat", sans-serif;
+  font-style: oblique;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #112714;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-weight: 700;
+  text-align: center;
+}
+
+section p {
+  text-align: justify;
+  text-align-last: center;
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  line-height: 1.6;
+  font-weight: 400;
+  padding: 0 10px;
+}
+</style>

@@ -1,0 +1,101 @@
+---
+export interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	url?: string;
+}
+
+const {
+	title,
+	description = "Dylan Acevedo - Desarrollador Full Stack Junior especializado en tecnologías web modernas. Experiencia en desarrollo de aplicaciones web, landing pages e integración de APIs.",
+	image = "/imgs/dylan-preview.jpg",
+	url = Astro.url.href
+} = Astro.props;
+
+import '../styles/global.css'
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Dylan Acevedo",
+	"jobTitle": "Desarrollador Full Stack Junior",
+	"description": "Desarrollador Full Stack Junior formado en Campuslands con experiencia en desarrollo web y tecnologías modernas",
+	"url": "https://dylan-acevedo.dev",
+	"sameAs": [
+		"https://github.com/dylan-acevedo",
+		"https://linkedin.com/in/dylan-acevedo"
+	],
+	"knowsAbout": [
+		"JavaScript",
+		"TypeScript",
+		"React",
+		"Node.js",
+		"Python",
+		"HTML5",
+		"CSS3",
+		"Desarrollo Web",
+		"Full Stack Development"
+	],
+	"worksFor": {
+		"@type": "Organization",
+		"name": "Freelance"
+	}
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO Básico -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Dylan Acevedo, desarrollador full stack, desarrollador web, JavaScript, TypeScript, React, Node.js, Python, HTML5, CSS3, portfolio, portafolio" />
+		<meta name="author" content="Dylan Acevedo" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={url} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url).href} />
+		<meta property="og:site_name" content="Dylan Acevedo Portfolio" />
+		<meta property="og:locale" content="es_ES" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={url} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, Astro.url).href} />
+		<meta name="twitter:creator" content="@dylanacevedo" />
+
+		<!-- Favicons y PWA -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="theme-color" content="#23b82a" />
+		<meta name="msapplication-TileColor" content="#23b82a" />
+
+		<!-- Preload de fuentes críticas -->
+		<link rel="preload" href="/fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+
+		<!-- Performance y carga -->
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	</head>
+	<body class="min-h-screen bg-gray-50 font-sans">
+		<slot />
+	</body>
+</html>

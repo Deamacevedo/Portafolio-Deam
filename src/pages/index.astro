@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import ProgrammingVideo from '../components/ProgrammingVideo.astro';
+import Donations from '../components/Donations.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+	title="Dylan Acevedo - Desarrollador Full Stack Junior | Portfolio"
+	description="Desarrollador Full Stack Junior formado en Campuslands. Especializado en JavaScript, TypeScript, React, Node.js y Python. Experiencia en desarrollo web, landing pages e integración de APIs."
+>
+	<Header />
+
+	<main>
+		<Navigation />
+		<AboutMe />
+		<Skills />
+		<Education />
+		<Experience />
+		<Contact />
+		<Projects />
+		<ProgrammingVideo />
+		<Donations />
+	</main>
+
+	<Footer />
+</Layout>

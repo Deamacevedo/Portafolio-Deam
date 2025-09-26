@@ -1,0 +1,126 @@
+---
+// Donations section component with PayPal
+---
+
+<section id="donaciones" class="donacion-section">
+  <h3>¿Quieres apoyar mi trabajo?</h3>
+  <div class="donacion-content">
+    <div class="donacion-text">
+      <p>
+        Si te gusta mi contenido y quisieras apoyarme en mi formación como
+        desarrollador, ¡te lo agradeceré mucho!
+      </p>
+      <p>
+        Cada contribución me ayuda a seguir aprendiendo y creando
+        proyectos más interesantes.
+      </p>
+    </div>
+    <a href="https://www.paypal.com/paypalme/DAcevedoMorales" target="_blank" rel="noopener noreferrer"
+        class="donacion-btn">
+      <img src="/icons/paypal.svg" alt="PayPal" class="paypal-icon" />
+      Donar con PayPal
+    </a>
+    <div class="corazon-animado">❤️</div>
+  </div>
+</section>
+
+<style>
+/* Seccion donacion */
+.donacion-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 60px 20px;
+  background-image: linear-gradient(to top, #dbdcd7 0%, #d7ddd7 25%, #c9e2cd 45%, #62e76d 65%, #23b82a 100%);
+  background-attachment: fixed;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(35, 184, 42, 0.2);
+  text-align: center;
+  scroll-margin-top: 70px;
+  transition: 0.3s ease;
+}
+
+.donacion-section:hover {
+  box-shadow: 0 25px 50px rgba(33, 109, 30, 5);
+}
+
+.donacion-section h3 {
+  font-family: "Montserrat", sans-serif;
+  font-style: oblique;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #112714;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  font-weight: 700;
+  text-align: center;
+}
+
+.donacion-text p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  line-height: 1.6;
+  font-weight: 400;
+  padding: 0 10px;
+}
+
+.donacion-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #0070ba, #009cde);
+  color: white !important;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 112, 186, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.donacion-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 112, 186, 0.4);
+  background: linear-gradient(to right, #009cde, #0070ba);
+}
+
+.paypal-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.corazon-animado {
+  font-size: 2rem;
+  margin-top: 15px;
+  animation: latido 1.5s ease infinite;
+}
+
+@keyframes latido {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .donacion-section {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .donacion-text p {
+    font-size: 1rem;
+  }
+
+  .donacion-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+</style>
