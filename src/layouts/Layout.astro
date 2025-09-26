@@ -9,7 +9,7 @@ export interface Props {
 const {
 	title,
 	description = "Dylan Acevedo - Desarrollador Full Stack Junior especializado en tecnologías web modernas. Experiencia en desarrollo de aplicaciones web, landing pages e integración de APIs.",
-	image = "/imgs/dylan-preview.jpg",
+	image = "/src/assets/imgs/dylan-preview.jpg",
 	url = Astro.url.href
 } = Astro.props;
 
@@ -86,7 +86,7 @@ const structuredData = {
 		<meta name="msapplication-TileColor" content="#23b82a" />
 
 		<!-- Preload de fuentes críticas -->
-		<link rel="preload" href="/fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/src/assets/fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
 
 		<!-- JSON-LD Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
